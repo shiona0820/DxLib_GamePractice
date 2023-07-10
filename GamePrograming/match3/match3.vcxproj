@@ -136,6 +136,7 @@
     <ClCompile Include="FreamContlor_cpp.cpp" />
     <ClCompile Include="FreamControl.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
+    <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="ソース.cpp" />
     <ClCompile Include="ソース1.cpp" />
   </ItemGroup>
