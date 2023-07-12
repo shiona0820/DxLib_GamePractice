@@ -145,6 +145,7 @@
     <ClInclude Include="FreamControl.h" />
     <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="GameMainScene.h" />
+    <ClInclude Include="GameOverScene_h.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />
