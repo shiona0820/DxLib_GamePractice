@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="FreamControl.h" />
     <ClInclude Include="GameClearScene.h" />
+    <ClInclude Include="GameMainScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />
