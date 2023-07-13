@@ -59,6 +59,9 @@
     <ClInclude Include="GameOverScene_h.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="InputControl_h.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />
