@@ -139,6 +139,7 @@
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="GameOverScene_cpp.pdf.cpp" />
     <ClCompile Include="InputControl_cpp.cpp" />
+    <ClCompile Include="SceneManager_cpp.cpp" />
     <ClCompile Include="ソース.cpp" />
     <ClCompile Include="ソース1.cpp" />
   </ItemGroup>
@@ -148,6 +149,7 @@
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="GameOverScene_h.h" />
     <ClInclude Include="InputControl_h.h" />
+    <ClInclude Include="SceneManager_h.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />
