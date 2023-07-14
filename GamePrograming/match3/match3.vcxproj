@@ -153,6 +153,7 @@
     <ClInclude Include="InputControl_h.h" />
     <ClInclude Include="SceneManager_h.h" />
     <ClInclude Include="Stage_h.h" />
+    <ClInclude Include="TitleScene_h.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />
