@@ -71,6 +71,9 @@
     <ClInclude Include="SceneManager_h.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Stage_h.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />
