@@ -141,5 +141,3 @@ void Cange_Scene(GAME_MODE mode)
 {
 	Next_Mode = mode;
 }
-
-ƒ^ƒCƒgƒ‹   SceneManager_
