@@ -140,6 +140,7 @@
     <ClCompile Include="GameOverScene_cpp.pdf.cpp" />
     <ClCompile Include="InputControl_cpp.cpp" />
     <ClCompile Include="SceneManager_cpp.cpp" />
+    <ClCompile Include="Stage_cpp.cpp" />
     <ClCompile Include="ソース.cpp" />
     <ClCompile Include="ソース1.cpp" />
   </ItemGroup>
