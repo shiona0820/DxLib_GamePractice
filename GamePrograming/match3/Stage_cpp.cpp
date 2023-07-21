@@ -28,13 +28,13 @@ typedef struct
 	int width, hight;
 	int image;
 	int backup;
-}; T_Object;
+}T_Object;
 
 typedef struct
 {
 	int x;
 	int y;
-}; T_CURSOR;
+}T_CURSOR;
 
 enum
 
@@ -48,9 +48,9 @@ enum
 * 変数宣言
 **/
 
-T_Object Block[HEIGHT][WIDTH];
-T_CURSOR Select[3];
-int Item[ITEM_MAX];
+T_Object Block[HEIGHT][12];  //ブロックオブジェクトデータ［WIDTH］
+T_CURSOR Select[3];  ///セレクトカーソル座標
+int Item[8];  //[ITEM_MAX]
 int ClickStatus;
 int Stage_Stage;
 int Stage_Mission;
@@ -127,10 +127,10 @@ int StageInitialize(void)
 	{
 		ret = -1;
 	}
-	if (MoveBlockSE == -1
+	if (MoveBlockSE == -1)
 	{
 		ret = -1;
-	})
+	}
 		return ret;
 }
 
@@ -144,7 +144,7 @@ void StageDraw(void) {
 	DrawGraph(0, 0, StageImage, FALSE);
 
 	//アイテムの取得個数を描画
-	for (int i = 0; i < ITEM_MAX; i++)
+	for (int i = 0; i < 8; i++)  //[ITEM_MAX]8のところ
 	{
 		DrawRotaGraph(540, 245 + i * 30, 0.5f, 0, BlockImage[i + 1], TRUE, 0);
 		DrawFormatString(580, 235 + i * 30, 0xffffff, "%3d", Item[i]);
@@ -153,7 +153,7 @@ void StageDraw(void) {
 	//ブロックを描画
 	for (int i = 0; i < HEIGHT; i++)
 	{
-		for (int j = 0; j < WIDTH; j++)
+		for (int j = 0; j < 12; j++)  //[WIDTH] １２のところ
 		{
 			if (Block[i][j].flg == TRUE && Block[i][j].imge != NULL)
 			{
@@ -176,7 +176,7 @@ void StageDraw(void) {
 		DrawFormatString(590, 211, GetColor(255, 255, 255), "%3d", Stage_Mission);
 
 		//アイテムの取得個数を描画
-		for (int i = 0; i < ITEM_MAX; i++)
+		for (int i = 0; i < 8; i++)  //[ITEM_MAX] 8のところ
 		{
 			DrawRotaGraph(540, 245 + i * 30, 0.5f, 0, BlockImage[i + 1], TRUE, 0);
 			DrawFormatString(580, 235 + i * 30, GetColor(255, 255, 255),
@@ -373,7 +373,7 @@ void StageDraw(void) {
 		}
 
 		//描画モードをノーブレンドする
-		SetDrawBlendMode(CX_BLENDMODE_NOBLEND, 0);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 		BlendMode -= 5;
 
@@ -472,7 +472,7 @@ void CheckClear(void)
 {
 	int i;
 
-	for (i = 0; i < ITEM_MAX; i++)
+	for (i = 0; i < 8; i++)  //ITEM_MAX  8
 	{
 		if (Item[i] >= Stage_Mission)
 		{
@@ -496,7 +496,7 @@ void CheckClear(void)
 
 int Get_StageState(void)
 {
-	return Stage_State;
+	return StageState;
 }
 
 /**
@@ -603,7 +603,7 @@ void combo_check_h(int y, int x, int* cnt, int* col)
 	Block[y][x].image = 0;
 	(*cnt)++;
 
-	if(Block{y+1}[x].image==Color )
+	if(Block[y+1][x].image==Color) 
 		{
 		combo_check_h(y + 1, x, cnt, col);
 		}

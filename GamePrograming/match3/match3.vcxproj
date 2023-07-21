@@ -149,11 +149,11 @@
     <ClInclude Include="FreamControl.h" />
     <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="GameMainScene.h" />
-    <ClInclude Include="GameOverScene_h.h" />
-    <ClInclude Include="InputControl_h.h" />
-    <ClInclude Include="SceneManager_h.h" />
-    <ClInclude Include="Stage_h.h" />
-    <ClInclude Include="TitleScene_h.h" />
+    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="InputControl.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AppMain_cpp.pdf" />

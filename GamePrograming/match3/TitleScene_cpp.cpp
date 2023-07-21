@@ -61,7 +61,7 @@ void TitleScene_Update(void)
 
     }
 
-    if (GetKeyFlg(MOUSE_INPUT_LEFT) == TRUE)
+    if (GetkeyFlg(MOUSE_INPUT_LEFT) == TRUE)
     {
         if (GetMousePositionX() > 120 && GetMousePositionX() < 290 &&
             GetMousePositionY() > 260 && GetMousePositionY() < 315)
