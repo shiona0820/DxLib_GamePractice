@@ -1,57 +1,48 @@
 #include"DxLib.h"
+#define NAME_LEN (64)
 
-//グローバル変数定義
-int global = 30;
+typedef struct
+{
+	char name[NAME_LEN];
+	int height;
+	float weight;
 
-//プロトタイプ宣言
-void Func1(int a[]);
-void Func2(int* a);
+}Students;
 
-//メイン関数
+void Func(Students s);
+
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_
 	LPSTR lpCmdLine, _In_ int nShowCmd)
 {
-	//ローカル変数定義
-	int num[] = {1,2,3};
+	Students students[3] = {
+		{"佐藤太郎",175,60.5f},
+		{"田中次郎",160,75.4f},
+		{"佐々木雅之",180,83.0f},
+	};
+	Students* p;
 
 	ChangeWindowMode(TRUE);
 
-	//Dxライブラリの初期化処理
 	if (DxLib_Init() == -1)
 	{
 		return -1;
 	}
-	//関数の呼び出し
-	Func1(num);
 
-	//関数の呼び出し
-	Func2(num);
+	Func(students[2]);
 
-	//入力待機
+	
 	WaitKey();
 
-	//Dxライブラリ使用の終了処理
 	DxLib_End();
 
 	return 0;
 }
 
-void Func1(int a[])
+void Func(Students s)
 {
-	int i;
 
-	for (i = 0; i < 3; i++)
-	{
-		DrawFormatString(20, (20 + (20 * i)), GetColor(255, 255, 255, "%d", a[i]);
-	}
-}
+	DrawFormatString(20, 20, GetColor(255, 255, 255), "%s", s.name);
+	DrawFormatString(20, 40, GetColor(255, 255, 255), "%d", s.height);
+	DrawFormatString(20, 60, GetColor(255, 255, 255), "%f", s.weight);
 
-void Func2(int* a)
-{
-	int i;
-
-	for (i = 0; i < 3; i++)
-	{
-		DrawFormatString(20,(20+ (20 * i)), GetColor(255, 255, 255), "%d", * (a + i));
-	}
 }

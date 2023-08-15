@@ -16,10 +16,10 @@ int StageInitialize(void);
 void CreateBlock(void);
 void SelectBlock(void);
 void StageDraw(void);
-void FadeOutBLock(void);
+void FadeOutBlock(void);
 void MoveBlock(void);
 void CheckBlock(void);
-void ChackClear(void);
+void CheckClear(void);
 
 int Get_StageState(void);
 int Get_StageClearFlag(void);

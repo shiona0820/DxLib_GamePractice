@@ -132,18 +132,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
-    <ClCompile Include="AppMain_cpp.pdf.cpp" />
-    <ClCompile Include="FreamContlor_cpp.cpp" />
-    <ClCompile Include="FreamControl.cpp" />
+    <ClCompile Include="FreamContlor.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
-    <ClCompile Include="GameOverScene_cpp.pdf.cpp" />
-    <ClCompile Include="InputControl_cpp.cpp" />
-    <ClCompile Include="SceneManager_cpp.cpp" />
-    <ClCompile Include="Stage_cpp.cpp" />
-    <ClCompile Include="TitleScene_cpp.cpp" />
-    <ClCompile Include="ソース.cpp" />
-    <ClCompile Include="ソース1.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="InputControl.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FreamControl.h" />
@@ -154,9 +150,6 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TitleScene.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AppMain_cpp.pdf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

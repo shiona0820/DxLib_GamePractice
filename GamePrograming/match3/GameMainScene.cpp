@@ -87,18 +87,18 @@ int GameMainScene_Initialize(void)
 **/
 void GameMainScene_Updata(void)
 {
-	switch (Get_StageStata())
+	switch (Get_StageState())
 	{
-	case0:
+	case 0:
 		SelectBlock();  //ブロックを選択する
 		break;
-	case2:
+	case 2:
 		MoveBlock();  //ブロックの移動
 		break;
-	case3:
+	case 3:
 		CheckBlock();  //ブロックの確認
 		break;
-	case4:
+	case 4:
 		CheckClear();  //クリアチェック
 			break;
 	default:
@@ -108,13 +108,13 @@ void GameMainScene_Updata(void)
 	//制限時間の更新
 	GameTime--;
 
-	//制限時間が無くなったらゲームオーバーに　する
+	//制限時間が無くなったらゲームオーバーにする
 	if (GameTime < 0)
 	{
 		Change_Scene(E_GAME_OVER);
 	}
 
-	//ミッションを達成したら、ゲームクリアに　する
+	//ミッションを達成したら、ゲームクリアにする
 	if (Get_StageClearFlag())
 	{
 		Change_Scene(E_GAME_CLEAR);
@@ -130,7 +130,7 @@ void GameMainScene_Updata(void)
 
 void GameMainScene_Draw(void)
 {
-	int posX = 600;
+	int PosX = 600;
 	int tmp_level = GameLevel;
 	int tmp_score = Get_StageScore();
 
@@ -144,7 +144,7 @@ void GameMainScene_Draw(void)
 	}
 	//レベルを描画
 	do {
-		DrawRotaGraph(PosX, 80, 0.5f, 0, NumberImage[tmp_level % 10], TRUE);
+		DrawRotaGraph(PosX , 80, 0.5f, 0, NumberImage[tmp_level % 10], TRUE);
 
 		tmp_level /= 10;
 
