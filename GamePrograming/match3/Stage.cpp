@@ -223,6 +223,7 @@ void CreateBlock(void)
 				}
 			}
 		}
+
 		/*for(i=;i<HEIGHT-1;i++)
 		{
 		for(j=1;j<WIDTH-1;j++)
@@ -233,6 +234,7 @@ void CreateBlock(void)
 		}
 		}
 		}*/
+
 
 		//ブロック連鎖チェック
 		for (i = 1; i < HEIGHT - 1; i++)
