@@ -1,10 +1,15 @@
 #pragma once
 
+
+//•Ï”éŒ¾
 class Ball
 {
+private:
+
+		float x;
+		float y;
+
 public:
-	float x;
-	float y;
 
 	Ball();
 	Ball(float mx, float my);

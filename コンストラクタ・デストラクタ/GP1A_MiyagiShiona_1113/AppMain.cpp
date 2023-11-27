@@ -12,28 +12,27 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return - 1;
 	}
 
-	//定義
-	Ball* p_ball = new Ball;
+	Enemy b1;
+	Enemy b2(320.0f, 240.0f);
 
 
-	//ループ処理
 	while (ProcessMessage() != -1)
 	{
-		p_ball->Update();
+		//動き
+		b1.Move();
+		//跳ね返り
+		b2.Bound();
+
+		b1.Update();
+		b2.Update();
 
 		ClearDrawScreen();
 
-		p_ball->Draw();
+		b1.Draw();
+		b2.Draw();
 
 		ScreenFlip();
-
-
-		p_ball->Move();
-
-		ClearDrawScreen();
 	}
-
-	delete p_ball;
 
 	//Dxライブラリ使用の終了処理
 	DxLib_End();

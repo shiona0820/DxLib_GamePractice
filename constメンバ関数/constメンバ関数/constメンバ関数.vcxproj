@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{68a2dfff-14ab-4d5b-a2d6-fafc5c41352d}</ProjectGuid>
-    <RootNamespace>テトリス</RootNamespace>
+    <ProjectGuid>{2248ef5e-3bca-4507-8873-7a6cc25c7584}</ProjectGuid>
+    <RootNamespace>constメンバ関数</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -132,24 +132,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="EndScene.cpp" />
-    <ClCompile Include="FreamControl.cpp" />
-    <ClCompile Include="GameMainScene.cpp" />
-    <ClCompile Include="InputControl.cpp" />
-    <ClCompile Include="RankingScene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Bar.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="EndScene.h" />
-    <ClInclude Include="FreamControl.h" />
-    <ClInclude Include="GameMainScene.h" />
-    <ClInclude Include="InputControl.h" />
-    <ClInclude Include="RankingSene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Bar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
