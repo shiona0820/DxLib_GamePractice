@@ -64,7 +64,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	//ゲームループ
 	while (ProcessMessage() == 0 && GetExitButton() != TRUE
-		&& ErrorCHeck() == D_NORMALITY)
+		&& ErrorCheck() == D_NORMALITY)
 	{
 		//フレーム制御機能更新処理
 		FreamControl_Update();
