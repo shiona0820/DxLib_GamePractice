@@ -51,6 +51,7 @@ bool KeyBoardControl::GetKeyUp(int key_code)
 	return false;
 }
 
+//範囲
 bool KeyBoardControl::CheckKeyCodeRange(int key_code)
 {
 	//配列の範囲外チェック

@@ -12,9 +12,13 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return - 1;
 	}
 
+	//ƒƒCƒ“ƒ‹[ƒv
 	while (ProcessMessage() != -1)
 	{
+
 		KeyBoardControl::Update();
+
+		printf("")
 
 		if (KeyBoardControl::GetKeyUp(KEY_INPUT_ESCAPE))
 		{

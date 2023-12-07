@@ -57,3 +57,4 @@ void Ball::Draw()
 	DrawCircleAA(x, y, 10, 100, GetColor(255, 255, 255), TRUE);
 }
 
+
