@@ -39,7 +39,7 @@ void InputControl_Initialize(void)
 	//入力状態の初期化
 	for (i = 0; i < XINPUT_BUTTON_MAX; i++)
 	{
-		button_state[i] = E_NONE;
+		button_state[i] == E_NONE;
 	}
 }
 
@@ -54,7 +54,7 @@ void InputControl_Update(void)
 	XINPUT_STATE input_controller;      //コントローラー入力情報
 
 	//コントローラーの入力情報を取得
-	GetJoyPadInputState(DX_INPUT_PAD1, &input_controller);
+	GetJoypadXInputState(DX_INPUT_PAD1, &input_controller);
 
 	//入力情報の更新
 	for (i = 0; i < XINPUT_BUTTON_MAX; i++)
@@ -149,7 +149,7 @@ int GetButtonDown(int button)
 {
 	int ret = FALSE;
 
-	if (button_state[button] = E_CLICK)
+	if (button_state[button] == E_CLICK)
 	{
 		ret = TRUE;
 	}

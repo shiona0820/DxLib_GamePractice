@@ -26,4 +26,4 @@ void SceneManager_Update(void);                 //更新処理
 void SceneManager_Draw(void);                   //描画処理
 
 void Change_Scene(GAME_MODE mode);              //シーン変更処理
-int ErrorChack(void);                           //エラーチェック処理
+int ErrorCheck(void);                           //エラーチェック処理

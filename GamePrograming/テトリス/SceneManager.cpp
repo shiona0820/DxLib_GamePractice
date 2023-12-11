@@ -29,7 +29,7 @@ int read_error;         //読込みエラー確認
 * 引数：ゲームモード情報
 * 戻り値：なし
 **/
-void ScenenManager_Initialize(GAME_MODE mode)
+void SceneManager_Initialize(GAME_MODE mode)
 {
 	read_error = D_NORMALITY;
 	switch (mode)
@@ -50,7 +50,7 @@ void ScenenManager_Initialize(GAME_MODE mode)
 		{
 			Set_RankingMode(RANKING_DISP_MODE);   //ランキングモードで起動
 		}
-		read_error = RankingScore_Initialize();   //ランキング画面の初期化
+		read_error = RankingScene_Initialize();   //ランキング画面の初期化
 		break;
 	case E_END:
 	default:
@@ -126,7 +126,7 @@ void SceneManager_Draw(void)
 *引数：変更するゲームモード
 *戻り値：なし
 **/
-void Chang_Scene(GAME_MODE mode)
+void Change_Scene(GAME_MODE mode)
 {
 	next_mode = mode;
 }
@@ -135,7 +135,7 @@ void Chang_Scene(GAME_MODE mode)
 *シーン管理機能：エラーチェック処理
 * 引数：なし戻り値：エラー情報
 **/
-int ErrorChack(void)
+int ErrorCheck(void)
 {
 	if (Get_EndTime() == TRUE)
 	{

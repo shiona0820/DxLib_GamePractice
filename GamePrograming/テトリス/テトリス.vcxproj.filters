@@ -59,7 +59,7 @@
     <ClInclude Include="InputControl.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="RankingSene.h">
+    <ClInclude Include="RankingScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">

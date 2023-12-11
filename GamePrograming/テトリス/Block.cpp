@@ -57,7 +57,7 @@ const int C_BLOCK_TABLE[BLOCK_TYPE_MAX][BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE] = {
 	{
 	{0,0,0,0},
 	{3,0,0,0},
-	{3,3,3,3},
+	{3,3,3,0},
 	{0,0,0,0}
 },
 	{
@@ -94,10 +94,10 @@ BLOCK_STATE Field[FIELD_HEIGHT][FIELD_WIDTH];  //フィールド配列
 BLOCK_STATE Next[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE];  //待機状態のブロック
 BLOCK_STATE Stock[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE];  //ストックのブロック
 BLOCK_STATE DropBlock[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE];  //落ちるブロック
-int DropBlock_x;  //落ちるブロックのｘ座標
-int DropBlock_y;  //落ちるブロックのY座標
+int DropBlock_X;  //落ちるブロックのｘ座標
+int DropBlock_Y;  //落ちるブロックのY座標
 
-int waitTime;  //待機時間
+int WaitTime;  //待機時間
 int Stock_Flg;  //ストックフラグ
 int Generate_Flg;  //生成フラグ
 int DeleteLine;  //消したラインの数
@@ -118,12 +118,15 @@ void check_line(void);  //ブロックの横一列確認処理
 /***
 *ブロック機能：初期化処理
 * 引数：なし
-* 戻り値：エラー情報（-1：異常、それ以外：正常
+* 戻り値：エラー情報（-1：異常、それ以外：正常)
 ***/
 int Block_Initialize(void)
 {
 	int ret = 0;  //戻り値
 	int i = 0;
+
+	//ブロック画像の読み込み
+	ret = LoadDivGraph("images/block.png", E_BLOCK_IMAGE_MAX, 10, 1, BLOCK_SIZE, BLOCK_SIZE, BlockImage);
 
 	//SEの読み込み
 	SoundEffect[0] = LoadSoundMem("sounds/SE3.mp3");
@@ -174,8 +177,7 @@ void Block_Update(void)
 	move_block();
 
 	//ブロックのストック
-	if ((GetButtonDown(XINPUT_BUTTON_LEFT_SHOULDER) == TRUE) ||
-		(GetButtonDown(XINPUT_BUTTON_LEFT_SHOULDER) == TRUE))
+	if ((GetButtonDown(XINPUT_BUTTON_LEFT_SHOULDER) == TRUE) || (GetButtonDown(XINPUT_BUTTON_LEFT_SHOULDER) == TRUE))
 	{
 		//生成可能であれば
 		if (Generate_Flg == TRUE)
@@ -189,7 +191,14 @@ void Block_Update(void)
 	if ((GetButtonDown(XINPUT_BUTTON_A) == TRUE) ||
 		(GetButtonDown(XINPUT_BUTTON_Y) == TRUE))
 	{
-		turn_block(TRUN_CROCKWICE);
+		turn_block(TURN_CROCKWICE);
+	}
+
+	//ブロックの回転（時計回り）
+	if ((GetButtonDown(XINPUT_BUTTON_B) == TRUE) ||
+		(GetButtonDown(XINPUT_BUTTON_X) == TRUE))
+	{
+		turn_block(TURN_CROCKWICE);
 	}
 
 	//落下処理
@@ -224,7 +233,7 @@ void Block_Draw(void)
 	int i, j;  //ループカウンタ
 
 	//フィールドのブロックを描画
-	for (j = 0; j < FIELD_WIDTH; i++)
+	for (i = 0; i < FIELD_HEIGHT; i++)
 	{
 		for (j = 0; j < FIELD_WIDTH; j++)
 		{
@@ -295,7 +304,11 @@ void create_field(void)
 			//フィールド値の設定
 			if (j == 0 || j == FIELD_WIDTH - 1 || i == FIELD_HEIGHT - 1)
 			{
-				Field[i][j] = E_BLOCK_EMPTY;  //空状態にする
+				Field[i][j] = E_BLOCK_WALL;  //壁状態にする
+			}
+			else
+			{
+				Field[i][j] = E_BLOCK_EMPTY;   //空状態にする
 			}
 		}
 	}
@@ -368,7 +381,7 @@ void move_block(void)
 	//下入力時（シフトドロップ処理）
 	if (GetButton(XINPUT_BUTTON_DPAD_DOWN))
 	{
-		if (check_overlap(DropBlock_X < DropBlock_Y + 1;) == TRUE)
+		if (check_overlap(DropBlock_X,DropBlock_Y + 1) == TRUE)
 		{
 			DropBlock_Y++;
 		}
@@ -384,7 +397,7 @@ void change_block(void)
 {
 	BLOCK_STATE temp[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE] = { E_BLOCK_EMPTY }; //退避領域
 
-	int i, l;  //ループカウンター
+	int i, j;  //ループカウンター
 
 	//ストック先が空かどうか確認
 	if (Stock_Flg == TRUE)
@@ -412,6 +425,7 @@ void change_block(void)
 		//新しいブロックの設定と次のブロックの生成
 		create_block();
 	}
+}
 
 	/**
 	*ブロック機能：ブロック交換処理
@@ -448,6 +462,7 @@ void change_block(void)
 					}
 				}
 			}
+
 			//ブロック回転
 			for (i = 0; i < BLOCK_TROUT_SIZE; i++)
 			{
@@ -459,13 +474,14 @@ void change_block(void)
 			//壁側の補正処理
 			if (check_overlap(DropBlock_X, DropBlock_Y) && DropBlock_X >= E_BLOCK_WALL)
 			{
-				DropBock_X--;
+				DropBlock_X--;
 			}
-			if (cheak_overlap(DropBlock_X, DropBlock_Y) && DropBlock_X <= E_BLOCK\EMPTY)
+			if (check_overlap(DropBlock_X, DropBlock_Y) && DropBlock_X <= E_BLOCK_EMPTY)
 			{
 				DropBlock_X++;
 			}
-		} while (cheak_overlap(DropBlock_X, DropBlock_Y) == FALSE);
+		} while (check_overlap(DropBlock_X, DropBlock_Y) == FALSE);
+
 		PlaySoundMem(SoundEffect[2], DX_PLAYTYPE_BACK, TRUE);
 	}
 
@@ -515,6 +531,7 @@ void change_block(void)
 		}
 		PlaySoundMem(SoundEffect[1], DX_PLAYTYPE_BACK, TRUE);
 	}
+
 	/**
 	*ブロック機能：ブロックの横一列確認処理
 	* 引数：なし
@@ -535,7 +552,7 @@ void change_block(void)
 				}
 			}
 			//一列揃っていたら、カウントを増やし、一段下に下げる
-			if (j>=FIELD_WIDTH)
+			if (j >= FIELD_WIDTH)
 			{
 				//カウント増加
 				DeleteLine++;
@@ -543,7 +560,7 @@ void change_block(void)
 				//一段下に下げる
 				for (k = i; k > 0; k--)
 				{
-					for ( j = 1; j < FIELD_WIDTH; j++)
+					for (j = 1; j < FIELD_WIDTH; j++)
 					{
 						Field[k][j] = Field[k - 1][j];
 					}
@@ -552,4 +569,3 @@ void change_block(void)
 			}
 		}
 	}
-}

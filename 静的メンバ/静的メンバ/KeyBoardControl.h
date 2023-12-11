@@ -12,6 +12,8 @@ private:
 	static char L_stick;   //Lスティック情報
 	static char R_stick;   //Rスティック情報
 
+	static char A_button;   //Aボタン
+
 public:
 	static void Update();  //更新処理
 

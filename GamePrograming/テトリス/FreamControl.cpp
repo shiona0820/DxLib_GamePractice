@@ -44,7 +44,7 @@ void FreamControl_Initialize(void)
 * ñﬂÇËílÅFÇ»Çµ
 **/
 
-void FreamCpntrol_Update(void)
+void FreamControl_Update(void)
 {
 	NowTime = GetNowCount();
 	Wait = FreamTime - (NowTime - LastTime);

@@ -6,7 +6,7 @@
 /**
 *マクロ定義
 **/
-#define RANKIG_FILE      ("dat/rankingdate.csv")
+#define RANKING_FILE      ("dat/rankingdate.csv")
 #define RANKING_MAX      (10)
 #define RANKING_NAME_LEN (11)
 
@@ -50,7 +50,7 @@ void ranking_input_name_draw(void);
 * 引数：なし
 * 戻り値：エラー情報(-1：異常有、-1以外：正常終了）
 **/
-int RankingScene_Initialaize(void)
+int RankingScene_Initialize(void)
 {
 	int ret = 0;
 
@@ -75,7 +75,7 @@ int RankingScene_Initialaize(void)
 * 引数：なし
 * 戻り値：エラー情報(-1：異常有、-1以外：正常終了）
 **/
-int RankingScene_Update(void)
+void RankingScene_Update(void)
 {
 	switch (DispMode)
 	{
@@ -97,7 +97,7 @@ int RankingScene_Update(void)
 * 引数：なし
 * 戻り値：なし
 **/
-void RankinScene_Draw(void)
+void RankingScene_Draw(void)
 {
 	int i;
 
@@ -111,7 +111,7 @@ void RankinScene_Draw(void)
 		for (i = 0; i < RANKING_MAX; i++)
 		{
 			DrawFormatString(20, 10 + (i * 25), GetColor(255, 255, 255), "%2d,%10s,%10d",
-				Ranking_Date[i].rank, Ranking_Date[i].name, Ranking_Date[i].score);
+				Ranking_Data[i].rank, Ranking_Data[i].name, Ranking_Data[i].score);
 		}
 		break;
 	}
@@ -138,6 +138,36 @@ void Set_RankingScore(int score)
 }
 
 /**
+*ランキング画面：ファイル読み込み処理
+* 引数：なし
+* 戻り値：なし
+**/
+void file_read(void)
+{
+	FILE* fp = NULL;
+	int i;
+
+	OutputDebugString("ファイルを読み込みます");
+	fopen_s(&fp, RANKING_FILE, "r");
+
+	if (fp == NULL)
+	{
+		OutputDebugString("ファイルが読み込めません");
+		OutputDebugString("ファイルを生成します");
+		file_write();
+	}
+	else
+	{
+		for (i = 0; i < RANKING_MAX; i++)
+		{
+			fscanf_s(fp, "%2d,%[^,],%10d\n", &Ranking_Data[i].rank,
+				Ranking_Data[i].name, RANKING_NAME_LEN, &Ranking_Data[i].score);
+		}
+		fclose(fp);
+	}
+}
+
+/**
 *ランキング画面：ファイル書き込み処理
 * 引数：なし
 * 戻り値：なし
@@ -158,7 +188,8 @@ void file_write(void)
 	{
 		for (i = 0; i < RANKING_MAX; i++)
 		{
-			fprintf(fp, "%2d,%[^,],%10d\n", Ranking_Data[i].rank, Ranking_Data[i].name, Ranking_data[i].score);
+			fprintf(fp, "%2d,%[^,],%10d\n", Ranking_Data[i].rank, Ranking_Data[i].name, 
+				Ranking_Data[i].score);
 		}
 		fclose(fp);
 	}
@@ -182,7 +213,7 @@ void ranking_sort(void)
 	{
 		for (j = i + 1; j < RANKING_MAX; j++)
 		{
-			if (Ranking_Data[i].score < RANKING_MAX[j].score)
+			if (Ranking_Data[i].score < Ranking_Data[j].score)
 			{
 				tmp = Ranking_Data[i];
 				Ranking_Data[i] = Ranking_Data[j];
@@ -193,9 +224,9 @@ void ranking_sort(void)
 
 	//順位を上からふっていく
 	for (i = 0; i < RANKING_MAX; i++)
-		[
-			Ranking_Data[i].rank = i + 1;
-		]
+	{
+		Ranking_Data[i].rank = i + 1;
+	}
 
 		//ファイルを書き込みを行う
 		file_write();
@@ -210,7 +241,7 @@ void ranking_input_name(void)
 {
 	int c;
 	//カーソル操作処理
-	if (GetButtonDoun(XINPUT_BUTTON_DPAD_LEFT) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_DPAD_LEFT) == TRUE)
 	{
 		if (Cursor.x > 0)
 		{
@@ -261,7 +292,7 @@ void ranking_input_name(void)
 			else if (Cursor.x == 10)
 			{
 				name_num--;
-				New_Score.name[name_num] = "\0";
+				New_Score.name[name_num] = '\0';
 			}
 			else
 			{
@@ -277,7 +308,7 @@ void ranking_input_name(void)
 * 引数：なし
 * 戻り値：なし
 **/
-void rannking_input_name_draw(void)
+void ranking_input_name_draw(void)
 {
 	int i;
 

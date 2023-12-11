@@ -147,7 +147,7 @@
     <ClInclude Include="FreamControl.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="InputControl.h" />
-    <ClInclude Include="RankingSene.h" />
+    <ClInclude Include="RankingScene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>

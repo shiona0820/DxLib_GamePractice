@@ -39,6 +39,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	//ウィンドウモードで起動
 	ChangeWindowMode(TRUE);
 
+	//ウィンドウサイズの決定
+	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLORBIT);
+
 	//Dxライブラリの初期化処理
 	if (DxLib_Init() == -1)
 	{
@@ -63,8 +66,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetFontSize(FONT_SIZE);
 
 	//ゲームループ
-	while (ProcessMessage() == 0 && GetExitButton() != TRUE
-		&& ErrorCheck() == D_NORMALITY)
+	while (ProcessMessage() == 0 && GetExitButton() != TRUE && ErrorCheck() == D_NORMALITY)
 	{
 		//フレーム制御機能更新処理
 		FreamControl_Update();
